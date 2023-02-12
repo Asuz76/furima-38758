@@ -27,16 +27,16 @@ Things you may want to cover:
 
 ## users テーブル
 
-| Column             | Type   | Options             |
-| ------------------ | ------ | -----------         |
-| email              | string | null: false, unique |
-| encrypted_password | string | null: false         |
-| nickname           | string | null: false         |
-| last_name          | string | null: false         |
-| first_name         | string | null: false         |
-| last_name_kana     | string | null: false         |
-| first_name_kana    | string | null: false         |
-| birth_date         | date   | null: false         |
+| Column             | Type   | Options                   |
+| ------------------ | ------ | ------------------------- |
+| email              | string | null: false, unique: true |
+| encrypted_password | string | null: false               |
+| nickname           | string | null: false               |
+| last_name          | string | null: false               |
+| first_name         | string | null: false               |
+| last_name_kana     | string | null: false               |
+| first_name_kana    | string | null: false               |
+| birth_date         | date   | null: false               |
 
 ### Association
 
@@ -76,14 +76,14 @@ Things you may want to cover:
 - belongs_to :item
 - has_one :shipping
 
-## shipping テーブル
+## shippings テーブル
 
 | Column        | Type       | Options                        |
 | ------------- | ---------- | ------------------------------ |
 | city          | string     | null: false                    |
 | address       | string     | null: false                    |
-| building      | string     | null: false                    |
-| postal_code   | integer    | null: false                    |
+| building      | string     |                                |
+| postal_code   | string     | null: false                    |
 | phone_number  | string     | null: false                    |
 | prefecture_id | integer    | null: false                    |
 | order         | references | null: false, foreign_key: true |
