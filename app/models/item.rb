@@ -18,5 +18,5 @@ class Item < ApplicationRecord
   validates :prefecture_id, numericality: { other_than: 1, message: "can't be blank" }
   validates :delivery_id, numericality: { other_than: 1, message: "can't be blank" }
   validates :price, presence: true,
-                    numericality: { only_integer: true, greater_than_or_equal_to: 300, less_than_or_equal_to: 9_999_999, message: '300以上9999999以下で入力してください' }
+                    numericality: { only_integer: true, greater_than_or_equal_to: 300, less_than_or_equal_to: 9_999_999, message: '300以上9999999以下の半角数字で入力してください' }
 end
