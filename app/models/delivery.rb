@@ -5,9 +5,7 @@ class Delivery < ActiveHash::Base
     { id: 3, name: '2~3日での発送' },
     { id: 4, name: '4~7日での発送' }
   ]
- 
-   include ActiveHash::Associations
-   has_many :items
- 
-  end
 
+  include ActiveHash::Associations
+  has_many :items
+end
