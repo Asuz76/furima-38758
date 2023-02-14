@@ -85,7 +85,7 @@ RSpec.describe Item, type: :model do
       end
 
       it '価格が半角数字でないと登録できない' do
-        @item.price = "３２１"
+        @item.price = '３２１'
         @item.valid?
         expect(@item.errors.full_messages).to include('Price 300以上9999999以下の半角数字で入力してください')
       end
