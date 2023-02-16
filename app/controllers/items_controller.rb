@@ -31,12 +31,12 @@ class ItemsController < ApplicationController
 
   def update
     if @item.update(item_params)
-      redirect_to  controller: :items, action: :show
+      redirect_to controller: :items, action: :show
     else
       render :edit
-   end
+    end
   end
-  
+
   private
 
   def item_params
@@ -47,5 +47,4 @@ class ItemsController < ApplicationController
   def set_item
     @item = Item.find(params[:id])
   end
-
 end
