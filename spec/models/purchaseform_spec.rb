@@ -37,10 +37,11 @@ RSpec.describe Purchaseform, type: :model do
       it '郵便番号が空だと保存できない' do
         @purchaseform.postal_code = nil
         @purchaseform.valid?
-        expect(@purchaseform.errors.full_messages).to include("Postal code can't be blank", 'Postal code is invalid. Include hyphen(-)')
+        expect(@purchaseform.errors.full_messages).to include("Postal code can't be blank",
+                                                              'Postal code is invalid. Include hyphen(-)')
       end
       it '郵便番号にハイフンがないと保存できない' do
-        @purchaseform.postal_code = 1234567
+        @purchaseform.postal_code = 1_234_567
         @purchaseform.valid?
         expect(@purchaseform.errors.full_messages).to include('Postal code is invalid. Include hyphen(-)')
       end
@@ -70,7 +71,7 @@ RSpec.describe Purchaseform, type: :model do
         expect(@purchaseform.errors.full_messages).to include('Phone number is invalid')
       end
       it 'phone_numberが12桁以上の場合は保存できない' do
-        @purchaseform.phone_number = "090123456789"
+        @purchaseform.phone_number = '090123456789'
         @purchaseform.valid?
         expect(@purchaseform.errors.full_messages).to include('Phone number is invalid')
       end

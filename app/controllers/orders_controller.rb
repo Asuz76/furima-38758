@@ -3,7 +3,7 @@ class OrdersController < ApplicationController
   before_action :set_item, only: [:index, :create]
 
   def index
-    if @item.user_id != current_user.id || @item.order == nil
+    if @item.user_id != current_user.id || @item.order.nil?
       @purchaseform = Purchaseform.new
     else
       redirect_to root_path
@@ -28,7 +28,9 @@ class OrdersController < ApplicationController
   end
 
   def order_params
-    params.require(:purchaseform).permit(:postal_code, :prefecture_id, :city, :adress, :building, :phone_number).merge(item_id: params[:item_id], user_id: current_user.id, token: params[:token])
+    params.require(:purchaseform).permit(:postal_code, :prefecture_id, :city, :adress, :building, :phone_number).merge(
+      item_id: params[:item_id], user_id: current_user.id, token: params[:token]
+    )
   end
 
   def pay_item
