@@ -13,6 +13,11 @@ RSpec.describe Purchaseform, type: :model do
     end
 
     context '発送先情報の登録ができないとき' do
+      it 'tokenが空だと購入ができない' do
+        @purchaseform.token = nil
+        @purchaseform.valid?
+        expect(@purchaseform.errors.full_messages).to include("Token can't be blank")
+      end
       it 'user_idが空だと保存できない' do
         @purchaseform.user_id = nil
         @purchaseform.valid?
