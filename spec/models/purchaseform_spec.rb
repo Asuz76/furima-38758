@@ -1,13 +1,19 @@
 require 'rails_helper'
 
 RSpec.describe Purchaseform, type: :model do
-  before do
-    @purchaseform = FactoryBot.build(:purchaseform)
-  end
-
   describe '発送先情報の登録' do
+    before do
+      @item = FactoryBot.create(:item)
+      @user = FactoryBot.create(:user)
+      @purchaseform = FactoryBot.build(:purchaseform, item_id: @item.id, user_id: @user.id)
+    end
+
     context '発送先情報の登録ができるとき' do
       it '必要事項が全て正しく入力されていれば保存できる' do
+        expect(@purchaseform).to be_valid
+      end
+      it '建物名が空でも保存できる' do
+        @purchaseform.building = nil
         expect(@purchaseform).to be_valid
       end
     end
