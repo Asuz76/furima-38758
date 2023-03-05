@@ -4,7 +4,6 @@ class OrdersController < ApplicationController
 
   def index
       @purchaseform = Purchaseform.new
-    end
   end
 
   def create
