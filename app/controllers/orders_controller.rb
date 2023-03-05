@@ -3,10 +3,7 @@ class OrdersController < ApplicationController
   before_action :set_item, only: [:index, :create]
 
   def index
-    if @item.user_id != current_user.id || @item.order.nil?
       @purchaseform = Purchaseform.new
-    else
-      redirect_to root_path
     end
   end
 
@@ -25,6 +22,7 @@ class OrdersController < ApplicationController
 
   def set_item
     @item = Item.find(params[:item_id])
+    redirect_to root_path if current_user.id == @item.user_id || @item.order.present?
   end
 
   def order_params
