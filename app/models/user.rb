@@ -15,4 +15,7 @@ class User < ApplicationRecord
 
   has_many :items
   has_many :orders
+
+  has_many :favorites, dependent: :destroy 
+  has_many :favorite_items, through: :favorites, source: :item
 end

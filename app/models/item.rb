@@ -3,6 +3,9 @@ class Item < ApplicationRecord
   has_one_attached :image
   has_one :order
 
+  has_many :favorites, dependent: :destroy
+  has_many :favorite_users, through: :favorites, source: :user
+
   extend ActiveHash::Associations::ActiveRecordExtensions
   belongs_to :category
   belongs_to :status
