@@ -125,12 +125,16 @@
 </div>
 
   <div class="links">
+    <% if @item.previous.present? %>
+    <%= link_to "＜ 前の商品", item_path(@item.previous), method: :get, class: "change-item-btn" %>
+    <% else  %>
     <a href="#" class="change-item-btn">
       ＜ 前の商品
     </a>
-    <a href="#" class="change-item-btn">
-      後ろの商品 ＞
-    </a>
+    <% end %>
+    <% if @item.next.present? %>
+    <%= link_to "後ろの商品 ＞", item_path(@item.next), method: :get, class: "change-item-btn" %>
+    <% end %>
   </div>
   <a href="#" class="another-item"><%= @item.category.name %>をもっと見る</a>
 </div>
