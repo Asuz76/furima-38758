@@ -18,4 +18,5 @@ class User < ApplicationRecord
 
   has_many :favorites, dependent: :destroy 
   has_many :favorite_items, through: :favorites, source: :item
+  has_many :comments
 end
